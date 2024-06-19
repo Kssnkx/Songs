@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Мои любимые песни
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-5">My favorite songs <З💦</h1>
+
+<div class="card-columns">
+  <div class="row">
+  {% for song in songs %}
+    <div class="col-md-3">
+      <div class="card mb-3">
+          <div class="card-header fw-bold">{{ song.title }}</div>
+          <div class="card-body">
+              <p class="badge custom-pink-badge text-wrap">{{ song.album.artist.name }}</p>
+              <p class="card-text">Альбом: 
+              <strong>{{ song.album.title }}</strong></p>
+              <p class="card-text">Длина: {{ song.length }} минут</p>
+              <p class="card-text">Номер трека: {{ song.track_number }}</p>
+              <p class="card-text">Дата релиза: {{ song.album.year }}</p>
+          </div>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+
+<style>
+.custom-pink-badge {
+  background-color: #ff69b4; /* Розовый цвет */
+  color: #fff; /* Белый текст */
+  /* Дополнительные стили */
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+</style>
+{% endblock %}
+
